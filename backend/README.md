@@ -23,6 +23,6 @@ Then run the frontend code to have a ui running for the project
 
 # How to run backend code:
 
-Navigate to the frontend folder using **cd ../frontend**
-Run the backend code using **npm run dev**
-The press "o"
+Navigate to the frontend folder using **cd ../frontend**.
+Run the backend code using **npm run dev**.
+The press "o".
