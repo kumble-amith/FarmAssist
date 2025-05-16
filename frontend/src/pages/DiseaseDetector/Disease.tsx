@@ -92,7 +92,7 @@ const Disease = () => {
 
       // console.log(response);
       let res = await response.json();
-
+      console.log(res)
       set_AI_Loading(false);
       set_AI_Results({
         diseaseName: res[0].toUpperCase(),

@@ -20,6 +20,8 @@ const navList = [
   { title: "Crop Adviser AI", path: "/crop.adviser.ai" },
   { title: "Crop Diseases AI", path: "/crop.disease.ai" },
   { title: "Crop Yield AI", path: "/crop.cropYield.ai" },
+  { title: "APMC Market", path: "/apmc" }, // New Link
+  { title: "Add Listing", path: "/add-listing" }, // New Link
 ];
 
 const Header = () => {
@@ -34,11 +36,11 @@ const Header = () => {
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <Link
-          to="#"
+          to="/"
           className="flex items-center gap-2 text-lg font-semibold md:text-base"
         >
           <Package2 className="h-6 w-6" />
-          <span className="sr-only">FarmAssist</span>
+          <span>FarmAssist</span>
         </Link>
         {/* Desktop Navigation */}
         <DesktopNavigationMenu />
@@ -80,17 +82,17 @@ const Header = () => {
               <DropdownMenuItem>Support</DropdownMenuItem>
             </Link>
             <DropdownMenuSeparator />
-            {!USER && (
+            {!USER ? (
               <>
-                <Link to={`/auth.register?redirectTo=${redirectTo}`}>
-                  <DropdownMenuItem>Register</DropdownMenuItem>
-                </Link>
-                <Link to={`/auth.login?redirectTo=${redirectTo}`}>
-                  <DropdownMenuItem>Login</DropdownMenuItem>
-                </Link>
+               <Link to={`/register?redirectTo=${redirectTo}`}>
+  <DropdownMenuItem>Register</DropdownMenuItem>
+</Link>
+<Link to={`/login?redirectTo=${redirectTo}`}>
+  <DropdownMenuItem>Login</DropdownMenuItem>
+</Link>
+
               </>
-            )}
-            {USER && (
+            ) : (
               <DropdownMenuItem onClick={logout}>Logout</DropdownMenuItem>
             )}
           </DropdownMenuContent>

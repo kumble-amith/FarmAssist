@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@/components/contexts/Auth";
+import { useNavigate } from "react-router-dom"; // Use react-router-dom for navigation
 import { Loader2 } from "lucide-react";
 import BasicInfo from "./BasicInfo";
 import Account from "./Account";
@@ -7,6 +8,7 @@ import Notifications from "./Notifications";
 
 const Profile = () => {
   const { USER } = useAuth();
+  const navigate = useNavigate(); // Initialize useNavigate for navigation
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState("basic");
 
@@ -19,6 +21,8 @@ const Profile = () => {
   }, [USER]);
 
   const setTabHelper = (event: any) => setTab(event.target.id);
+  const goToDashboard = () => navigate("/dashboard"); // Navigate to the dashboard
+
   return (
     <>
       {loading && (
@@ -60,6 +64,13 @@ const Profile = () => {
                     onClick={setTabHelper}
                   >
                     Notifications
+                  </p>
+                  {/* New Dashboard Button */}
+                  <p
+                    className="hover:bg-accent p-1.5 cursor-pointer text-blue-500"
+                    onClick={goToDashboard}
+                  >
+                    Dashboard
                   </p>
                 </nav>
                 <div className="grid gap-6">
