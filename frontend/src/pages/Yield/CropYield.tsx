@@ -232,7 +232,7 @@ import { HashLink } from "react-router-hash-link";
 import UnAuthAlert from "./Auth";
 
 const CropYield = () => {
-  const { USER } = useAuth();
+  const  USER  = "User";
   const [AI_Loading, set_AI_Loading] = useState(false);
   const [inputs, setInputs] = useState<{
     crop?: string;

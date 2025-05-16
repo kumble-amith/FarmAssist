@@ -30,7 +30,7 @@ import { FormEvent, useState, useRef } from "react";
 import Webcam from "react-webcam";
 
 const Disease = () => {
-  const { USER } = useAuth();
+  const USER  = "User";
   const [AI_Loading, set_AI_Loading] = useState(false);
   const [AI_Results, set_AI_Results] = useState<any>(null);
   const [selectedPlant, setSelectedPlant] = useState("");
