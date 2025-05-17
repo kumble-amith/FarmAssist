@@ -39,7 +39,7 @@ def getYield():
     reqData = json.loads(request.form.get('values', -1))
     values = [float(reqData['R']) , float(reqData['F']) , float(reqData['T']) , float(reqData['N']) , float(reqData['P']) , float(reqData['K'])]
     yields = predictYield(values=values,area=reqData['area'] ,crop=reqData['crop'])
-    
+    yields = round(yields , 2)
     response = make_response(jsonify(yields))
     response.headers['Content-Type'] = 'application/json'
     return jsonify(yields),200  

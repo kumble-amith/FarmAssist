@@ -40,7 +40,7 @@ const Disease = () => {
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const webcamRef = useRef<Webcam>(null);
 
-  const plants = ["Wheat", "Rice", "Mango", "Corn", "Coffee"].sort();
+  const plants = ["Wheat", "Rice", "Mango", "Corn"].sort();
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -79,7 +79,7 @@ const Disease = () => {
     if (image) {
       const data = await convertBase64(image);
       const cropFromUser = selectedPlant;
-      const response = await fetch("http://localhost:5000/predictDisease", {
+      const response = await fetch("http://127.0.0.1:5000/predictDisease", {
         method: "POST",
         body: JSON.stringify({
           file: data,
@@ -97,6 +97,8 @@ const Disease = () => {
       set_AI_Results({
         diseaseName: res[0].toUpperCase(),
         diseaseDescription: res[1],
+        diseaseCure : res[2],
+        diseaseRate : res[3]
       });
       // console.log(res[0]);
     }
@@ -273,6 +275,10 @@ const Disease = () => {
                         </p>
                         <div style={{ marginTop: "20px" }}></div>
                         <p>{AI_Results.diseaseDescription}</p>
+                        <div style={{ marginTop: "20px" }}></div>
+                        <p>{AI_Results.diseaseCure}</p>
+                        <div style={{ marginTop: "20px" }}></div>
+                        <p>  <b> Severity {AI_Results.diseaseRate} </b></p>
                       </div>
                     )}
                   </CardDescription>
